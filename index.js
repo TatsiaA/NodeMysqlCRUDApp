@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -28,3 +29,5 @@ app.use('/api/v1/employees', employeeRoutes);
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
+
+module.exports.handler = serverless(app);

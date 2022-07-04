@@ -1,0 +1,36 @@
+service: nodemysqlcrudapp
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - 'serverless-offline'
+
+functions:
+  units:
+    handler: 'index.handler'
+    events:
+      - http:
+          path: '/{proxy+}'
+          method: any
+  app:
+    handler: index.handler
+    events:
+      - http:
+          path: api/v1/employees
+          method: get
+      - http:
+          path: api/v1/employees/{id}
+          method: get
+      - http:
+          path: api/v1/employees
+          method: post
+      - http:
+          path: api/v1/employees/{id}
+          method: put
+      - http:
+          path: api/v1/employees/{id}
+          method: delete
