@@ -25,9 +25,4 @@ const employeeRoutes = require('./src/routes/employee.routes');
 // using as middleware
 app.use('/api/v1/employees', employeeRoutes);
 
-// listen for requests
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-});
-
 module.exports.handler = serverless(app);
